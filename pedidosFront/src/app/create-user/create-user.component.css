@@ -1,0 +1,12 @@
+html{
+    background: rgb(20,17,210);
+background: linear-gradient(90deg, rgba(20,17,210,1) 5%, rgba(107,82,200,1) 44%, rgba(0,222,200,1) 96%);
+}
+body{
+    background: rgb(20,17,210);
+    background: linear-gradient(90deg, rgba(20,17,210,1) 5%, rgba(107,82,200,1) 44%, rgba(0,222,200,1) 96%);                                            
+}
+button{
+    border-color: black;
+    border-bottom: 1px solid ;
+}
