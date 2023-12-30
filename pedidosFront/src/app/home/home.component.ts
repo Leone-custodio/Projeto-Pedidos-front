@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, NO_ERRORS_SCHEMA, NgModule, OnInit } from '@angular/core';
 import { ProductModel } from '../models/productModel';
 import { ProductService } from '../services/productService';
+import { CommandResultModel } from '../models/commandResultModel';
 
 @Component({
   selector: 'app-home',
@@ -8,19 +9,21 @@ import { ProductService } from '../services/productService';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit{
-  listPructs: ProductModel[] = [] 
+  resultView: CommandResultModel = new CommandResultModel;
+  price: number = 30.12;
 
-  constructor(private productService: ProductService)
-  {
 
+
+  constructor(private productService: ProductService){
+    this.getProductsList()
+  }
+
+  async getProductsList(){
+    (await this.productService.getAllProducts())
+      .subscribe(resultView => this.resultView = resultView)
   }
 
   ngOnInit(): void {
-    this.listProducts()
   }
-
-  listProducts(): void{
-    this.productService.productList().subscribe((list)=>(this.listPructs = list));
-  }
-
+  
 }

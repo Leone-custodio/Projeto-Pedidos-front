@@ -1,18 +1,21 @@
 import { Injectable} from "@angular/core";
-import {HttpClient, HttpHeaders} from  "@angular/common/http"
+import {HttpClient} from  "@angular/common/http"
+import{environment} from "src/environments/environment"
+import { CommandResultModel } from "../models/commandResultModel";
 import { ProductModel } from "../models/productModel";
-import { Observable } from "rxjs";
+
+
 @Injectable(
 )
 export class ProductService{
-    urlBase = "https://localhost:7122/products/"
+    
+    private url = environment.api;
 
     constructor(private http: HttpClient){
-      
     }
 
-    productList() : Observable<ProductModel[]>{
-      return this.http.options<ProductModel[]>(" https://localhost:7122/v1/products/getAllProducts")
-    } 
+    async getAllProducts(){
+        return this.http.get<CommandResultModel>(this.url) 
+    }
 }
 

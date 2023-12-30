@@ -1,3 +1,9 @@
-<ul >
-    <li>listPructs</li>
-</ul>
+
+<div style="width: 33.3%;display: inline-table; background: rgb(209, 209, 224); " *ngFor="let item of resultView.products"  >
+        <div >
+                <img style="max-width: 20%;" src="" alt="" srcset="../assets/images/hacker.ico">
+        </div>
+        <div><b>{{item.name}}</b></div>
+        <div><b>R${{item.price}}</b></div>
+</div>
+    
