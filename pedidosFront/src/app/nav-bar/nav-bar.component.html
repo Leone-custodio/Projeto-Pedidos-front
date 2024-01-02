@@ -1,13 +1,19 @@
-<nav  class="navbar navbar-expand-lg bg-body-tertiary">
-    <div class="container-fluid">
-      <a style="width: 20rem; " href="#"><img style="max-width: 15%;" src="" alt="" srcset="../assets/images/hacker.ico"></a>
-      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-        <div class="navbar-nav">
-          <a class="nav-link active" href="login">Login</a>
-          <a class="nav-link" href="createUser">Usuário</a>
-          <a class="nav-link" href="editUser">Editar</a>
+<nav class="navbar navbar-expand-lg bg-body-tertiary" style=" position: fixed;width: 100%; z-index: 1;" >
+      <div class="container-fluid">
+        <button style="color: antiquewhite; cursor: pointer;" (click)="check()" >Menu<img style="max-width: 3rem; background:rgb(28, 27, 102)" src="" alt="" srcset="../assets/images/hacker.png"></button>
+        
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+          <div *ngIf="checkNavBar"  >
+            <a style="padding-left: 30%;" href="home">Home</a>
+            <a style="padding-left: 30%;" href="login">Login</a>
+            <a style="padding-left: 30%;" href="createUser">Cadastro</a>
+          </div>
         </div>
       </div>
-    </div>
-  </nav>
+      <div *ngIf="data == true" style="color: antiquewhite; cursor: pointer;">
+        <p >Usuário</p>
+        <button (click)="logout()" style="color: antiquewhite;" >Sair</button>
+      </div>
+</nav>
+
   

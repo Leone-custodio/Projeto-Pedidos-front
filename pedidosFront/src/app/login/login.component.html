@@ -1,12 +1,57 @@
-<form>
-    <div class="mb-3">
-      <label for="exampleInputEmail1" class="form-label">Cpf</label>
-      <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-      <div id="emailHelp" class="form-text">Digite o seu cpf cadastrado no sitema</div>
+<body>
+  
+  <div style="padding-top: 6rem;">
+    <div style=" float: right;padding-right: 20%; padding-top: 11rem;">
+      <img style=" max-width: 14rem; " src="" alt="" srcset="../assets/images/hacker.png" >
     </div>
-    <div class="mb-3">
-      <label for="exampleInputPassword1" class="form-label">Password</label>
-      <input type="password" class="form-control" id="exampleInputPassword1">
+    <h1 style="background-color: rgb(48, 77, 173);">Login de Usuário</h1>
+    <form (ngSubmit)="loginUser(cpf.value, password.value)">
+      <br><br><br><br>
+      <label style="padding-right: 4%;" for="cpf">CPF:</label>
+      <input #cpf type="text" id="cpf" ><br>
+      <label style="padding-right: 3%;" for="password">Senha:</label>
+      <input #password type="password" id="password" ><br>
+      
+      <button type="submit">Login</button>
+      
+    </form>
+    <div *ngIf="isLoading" class="loading-overlay">
+      <!-- Adicione aqui o seu indicador de carga (pode ser um spinner, mensagem, etc.) -->
+      Carregando...
     </div>
-    <button type="submit" class="btn btn-success">Submit</button>
-  </form>
+    
+  </div><br><br><br><br><br><br><br><br><br><br><br><br>
+</body>
+
+<style>
+  body{
+    background: linear-gradient(90deg, rgba(20,17,210,1) 5%, rgb(82, 123, 200) 44%);
+    color: rgb(107, 221, 206);;
+  }
+  form{
+    padding-left: 20%;
+  }
+
+  h1{
+    padding-left: 30%;
+  }
+
+  button{
+    background-color: rgb(93, 156, 30);
+  }
+  html{
+    background-color: rgb(48, 77, 173)
+  }
+  .loading-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+</style>

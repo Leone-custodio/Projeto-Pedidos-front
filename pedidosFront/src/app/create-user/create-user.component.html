@@ -1,27 +1,51 @@
 <body>
-    <br><H1 style="text-align: center;">Insira os seus dados para criar o seu usuário</H1><br>
-    <div class="Corpo do pedido">
-        <div style="display: grid; align-content: center ;">
-            <div class="input-group mb-3">
-                <span class="input-group-text" id="inputGroup-sizing-default">Nome</span>
-                <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
-              </div>
-              <div class="input-group mb-3">
-                <span class="input-group-text" id="inputGroup-sizing-default">Cpf</span>
-                <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
-              </div>
-              <div class="input-group mb-3">
-                <span class="input-group-text" id="inputGroup-sizing-default">Email</span>
-                <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
-              </div>
-              <div class="input-group mb-3">
-                <span class="input-group-text" id="inputPassword4">Senha</span>
-                <input type="password" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
-              </div>
-        </div>
+  
+  <div style="padding-top: 6rem;">
+    <div style=" float: right;padding-right: 20%; padding-top: 9rem;">
+      <img style=" max-width: 14rem; " src="" alt="" srcset="../assets/images/hacker.png" >
     </div>
-    <div style="text-align: right; margin: 20px; padding-bottom: 20px;">
-        <button type="button" class="btn btn-danger" id="Cancelar">Cancelar</button>
-        <button type="button" class="btn btn-success" id="Confirmar">Confirmar</button>
-    </div>
+    <h1 style="background-color: rgb(48, 77, 173);">Cadastro de Usuário</h1>
+    <form (ngSubmit)="registerUser(name.value, email.value, cpf.value, address.value, password.value)">
+      <br><br><br><br>
+      <label style="padding-right: 2.5%;" for="name">Nome:</label>
+      <input #name type="text" id="name"><br>
+      
+      <label style="padding-right: 3%;" for="email">Email:</label>
+      <input #email type="email" id="email"><br>
+      
+      <label style="padding-right: 4%;" for="cpf">CPF:</label>
+      <input #cpf type="text" id="cpf" ><br>
+      
+      <label style="padding-right: 0.5%;" for="address">Endereço:</label>
+      <input #address type="text" id="address"><br>
+      
+      <label style="padding-right: 2.5%;" for="password">Senha:</label>
+      <input #password type="password" id="password" ><br><br>
+      
+      <button type="submit">Cadastrar</button>
+      
+    </form>
+    
+  </div><br><br><br><br><br><br><br><br><br><br><br><br>
 </body>
+
+<style>
+  body{
+    background: linear-gradient(90deg, rgba(20,17,210,1) 5%, rgb(82, 123, 200) 44%);
+    color: rgb(107, 221, 206);;
+  }
+  form{
+    padding-left: 20%;
+  }
+
+  h1{
+    padding-left: 30%;
+  }
+
+  button{
+    background-color: rgb(93, 156, 30);
+  }
+  html{
+    background-color: rgb(48, 77, 173)
+  }
+</style>

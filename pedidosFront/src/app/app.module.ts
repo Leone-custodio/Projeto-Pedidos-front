@@ -10,6 +10,9 @@ import { EditUserComponent } from './edit-user/edit-user.component';
 import { LoginComponent } from './login/login.component';
 import { ProductService} from './services/productService';
 import { HttpClientModule } from '@angular/common/http';
+import { MenuLateralComponent } from './menu-lateral/menu-lateral.component';
+import { UserService } from './services/userService';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -18,14 +21,17 @@ import { HttpClientModule } from '@angular/common/http';
     NavBarComponent,
     HomeComponent,
     EditUserComponent,
-    LoginComponent
+    LoginComponent,
+    MenuLateralComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,
+    FormsModule,
+    
   ],
-  providers: [ProductService],
+  providers: [ProductService, UserService],
   bootstrap: [AppComponent],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA,
     NO_ERRORS_SCHEMA]

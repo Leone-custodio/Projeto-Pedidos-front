@@ -1,4 +1,4 @@
-nav{
+nav,button{
      background:rgb(28, 27, 102)
        
 }
@@ -7,3 +7,11 @@ a{
     font-family: 'Times New Roman', Times, serif;
     font-size: 20px;
 }
+
+#mostrar{
+    display: none;
+  }
+  
+#passar_mouse:hover #mostrar{
+    display:block;
+    }

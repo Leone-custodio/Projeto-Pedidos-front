@@ -1,9 +1,23 @@
 
-<div style="width: 33.3%;display: inline-table; background: rgb(209, 209, 224); " *ngFor="let item of resultView.products"  >
-        <div >
-                <img style="max-width: 20%;" src="" alt="" srcset="../assets/images/hacker.ico">
-        </div>
-        <div><b>{{item.name}}</b></div>
-        <div><b>R${{item.price}}</b></div>
-</div>
-    
+<body style="padding-top: 6rem;">
+      <div class="container"  >
+           <div class="row" >
+                <div class=" col-6 col-md-4" *ngFor="let item of resultView.products" >
+                <br>
+                     <div>
+                        <img *ngIf="item.name == ('MOUSE')"  style="max-width:       60%;" class="card-img-top"  src="" alt="" srcset="../assets/images/mouse.png">
+                        <img *ngIf="item.name ==('FONEGAMER')" style="max-width:     50%;" class="card-img-top"  src="" alt="" srcset="../assets/images/fone-gamer.png">
+                        <img *ngIf="item.name ==('GABINETE')" style="max-width:      50%;" class="card-img-top"  src="" alt="" srcset="../assets/images/Gabinete.png">
+                        <img *ngIf="item.name ==('MONITOR')" style="max-width:       43%;" class="card-img-top"  src="" alt="" srcset="../assets/images/monitor.png">
+                        <img *ngIf="item.name ==('TECLADO')" style="max-width:       60%;" class="card-img-top"  src="" alt="" srcset="../assets/images/teclado.png">
+                        <img *ngIf="item.name ==('CADEIRA-GAMER')" style="max-width: 30%;" class="card-img-top"  src="" alt="" srcset="../assets/images/CadeiraGamer.png">
+                        <div class="card-body">
+                          <h5 class="card-title">{{item.name}}</h5>
+                          <h5 class="card-title">Preço: R${{item.price}}</h5>
+                          <button type="button" class="btn btn-success">Comprar</button>
+                        </div>
+                     </div>
+                </div>
+           </div>
+      </div>
+</body>

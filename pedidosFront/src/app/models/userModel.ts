@@ -1,6 +1,8 @@
 export class UserModel{
-    id : string = ""
-    nome: string = ""
+    id? : string = ""
+    name: string = ""
     email: string = ""
     cpf: string = ""
+    address: string = ""
+    password: string = ""
 }

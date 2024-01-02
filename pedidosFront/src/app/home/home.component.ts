@@ -1,7 +1,7 @@
 import { Component, NO_ERRORS_SCHEMA, NgModule, OnInit } from '@angular/core';
 import { ProductModel } from '../models/productModel';
 import { ProductService } from '../services/productService';
-import { CommandResultModel } from '../models/commandResultModel';
+import { ProductCommandResultModel } from '../models/commandResultModel';
 
 @Component({
   selector: 'app-home',
@@ -9,10 +9,8 @@ import { CommandResultModel } from '../models/commandResultModel';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit{
-  resultView: CommandResultModel = new CommandResultModel;
+  resultView: ProductCommandResultModel = new ProductCommandResultModel;
   price: number = 30.12;
-
-
 
   constructor(private productService: ProductService){
     this.getProductsList()
