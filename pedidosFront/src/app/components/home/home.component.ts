@@ -1,7 +1,7 @@
 import { Component, NO_ERRORS_SCHEMA, NgModule, OnInit } from '@angular/core';
-import { ProductModel } from '../models/productModel';
-import { ProductService } from '../services/productService';
-import { ProductCommandResultModel } from '../models/commandResultModel';
+import { ProductModel } from '../../models/productModel';
+import { ProductService } from '../../services/productService';
+import { ProductCommandResultModel } from '../../models/commandResultModel';
 
 @Component({
   selector: 'app-home',

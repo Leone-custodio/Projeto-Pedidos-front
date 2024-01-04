@@ -1,5 +1,5 @@
 import { Component, Injectable } from '@angular/core';
-import { UserModel } from '../models/userModel';
+import { UserModel } from '../../models/userModel';
 import { ChangeDetectorRef } from '@angular/core';
 
 

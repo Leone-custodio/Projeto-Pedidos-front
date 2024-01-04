@@ -1,9 +1,9 @@
 
 import { Component } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { UserService } from '../services/userService'; // Crie este serviço para gerenciar as operações do usuário
-import { UserModel } from '../models/userModel';
-import { UserCommand } from '../models/userCommand';
+import { UserService } from '../../services/userService'; // Crie este serviço para gerenciar as operações do usuário
+import { UserModel } from '../../models/userModel';
+import { UserCommand } from '../../models/userCommand';
 import { ChangeDetectorRef } from '@angular/core';
 
 @Component({
