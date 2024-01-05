@@ -13,6 +13,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { UserService } from './services/userService';
 import { FormsModule } from '@angular/forms';
 import { ShoppingCartComponent } from './components/shopping-cart/shopping-cart.component';
+import { AuthService } from './services/authService';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,7 @@ import { ShoppingCartComponent } from './components/shopping-cart/shopping-cart.
     FormsModule,
     
   ],
-  providers: [ProductService, UserService],
+  providers: [ProductService, UserService, AuthService],
   bootstrap: [AppComponent],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA,
     NO_ERRORS_SCHEMA]

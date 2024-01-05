@@ -6,14 +6,13 @@
           <div *ngIf="checkNavBar"  >
             <a style="padding-left: 10%;" href="home">Home</a>
             <a style="padding-left: 10%;" href="login">Login</a>
-            <a style="padding-left: 10%;" href="createUser">Cadastro</a>
             <a style="padding-left: 10%;" href="cart">Carrinho</a>
           </div>
         </div>
       </div>
-      <div *ngIf="data == true" style="color: rgb(107, 221, 206); cursor: pointer;">
-        <p >Usuário</p>
-        <button (click)="logout()" style="color: rgb(107, 221, 206);" >Sair</button>
+      <img *ngIf="data == true" style="width: 4%;" src="../assets/images/hacker1.png" alt="">
+      <div>
+        <button type="menu" *ngIf="data == true" (click)="logout()" style="float: inline-start; color: rgb(107, 221, 206); cursor: pointer; width: 8rem;" >Olá   {{user.name}}</button>
       </div>
 </nav>
 

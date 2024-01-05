@@ -5,4 +5,5 @@ export class UserCommand{
     message: string = "";
     user?: UserModel;
     users?: UserModel[];
+    expirationTime: number = 0;
 }

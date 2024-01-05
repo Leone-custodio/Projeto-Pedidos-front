@@ -1,6 +1,7 @@
 import { Component, Injectable } from '@angular/core';
 import { UserModel } from '../../models/userModel';
 import { ChangeDetectorRef } from '@angular/core';
+import { AuthService } from 'src/app/services/authService';
 
 
 @Component({
@@ -21,7 +22,7 @@ export class NavBarComponent {
       password: ''
     };
     data : boolean = false;
-  constructor(private cdr: ChangeDetectorRef){
+  constructor(private cdr: ChangeDetectorRef, private authService: AuthService){
     this.getUserLocalStorage();
   }
   check(): boolean{
@@ -46,5 +47,31 @@ export class NavBarComponent {
     localStorage.removeItem('userData');
     this.cdr.detectChanges();
     this.data = false;
+  }
+
+  ngOnInit(): void {
+    // Exemplo de como obter e usar o token armazenado
+    const tokenData = this.authService.getToken();
+    const name = tokenData.user.name;
+    this.user.name = this.userName(name);
+
+    if (tokenData && this.authService.isTokenValid()) {
+      console.log('Token válido:', tokenData);
+      // Faça o que for necessário com o token válido
+    } else {
+      // Redirecione para a tela de login ou tome outras ações apropriadas
+      console.log('Token inválido. Redirecionando para a tela de login.');
+    }
+  }
+  
+  userName( name: string){
+    const fullName = name;
+
+    // Divida o nome completo nos espaços em branco
+    const nameParts = fullName.split(' ');
+
+    // Obtenha o primeiro e segundo nome
+    const firstName = nameParts[0];
+    return firstName;
   }
 }
