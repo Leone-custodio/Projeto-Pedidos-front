@@ -1,17 +1,30 @@
 import { Injectable } from '@angular/core';
+import { UserModel } from '../models/userModel';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-  private readonly tokenKey = 'userData';
+  user: UserModel = {
+    name: '',
+    email: '',
+    cpf: '',
+    address: '',
+    password: ''
+  };
 
-  setToken(userData: any): void {
-    localStorage.setItem(this.tokenKey, JSON.stringify(userData));
-  }
+  private readonly tokenKey = 'userData';
+  private readonly orderKey = 'orderData';
+
+  constructor(private router: Router ){}
 
   getToken(): any | null {
     const userData = localStorage.getItem(this.tokenKey);
+    return userData ? JSON.parse(userData) : null;
+  }
+  getOrderToken(): any | null {
+    const userData = localStorage.getItem(this.orderKey);
     return userData ? JSON.parse(userData) : null;
   }
 
@@ -25,5 +38,33 @@ export class AuthService {
     return expirationTime && expirationTime > Math.floor(Date.now() / 1000);
   }
 
-  // Adicione mais métodos conforme necessário para manipular o token, como logout, etc.
+  getTokenUser(): void {
+    const tokenData = this.getToken();
+    this.user.name = tokenData.user.name;
+    this.user.cpf = tokenData.user.cpf;
+    this.user.email = tokenData.user.email;
+    this.user.address = tokenData.user.address;
+
+    if (tokenData && this.isTokenValid()) {
+      console.log('Token válido:', tokenData);
+      
+      return tokenData;
+    } 
+  }
+
+  getOrdertoken(){
+    
+  }
+
+  logout(): void {
+    const confirmLogout = window.confirm('Tem certeza de que deseja sair ?');
+
+    if (confirmLogout) {
+      localStorage.removeItem('userData');
+
+      this.router.navigate(['/home']).then(() => {
+        window.location.reload();
+      });
+    }
+  }
 }

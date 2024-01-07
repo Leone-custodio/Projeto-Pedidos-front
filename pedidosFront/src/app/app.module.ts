@@ -14,6 +14,7 @@ import { UserService } from './services/userService';
 import { FormsModule } from '@angular/forms';
 import { ShoppingCartComponent } from './components/shopping-cart/shopping-cart.component';
 import { AuthService } from './services/authService';
+import { PerfilUsuarioComponent } from './components/perfil-usuario/perfil-usuario.component';
 
 @NgModule({
   declarations: [
@@ -23,14 +24,14 @@ import { AuthService } from './services/authService';
     HomeComponent,
     EditUserComponent,
     LoginComponent,
-    ShoppingCartComponent
+    ShoppingCartComponent,
+    PerfilUsuarioComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,
-    FormsModule,
-    
+    FormsModule
   ],
   providers: [ProductService, UserService, AuthService],
   bootstrap: [AppComponent],

@@ -1,0 +1,37 @@
+<body>
+  
+    <div style="padding-top: 6rem;">
+      <h1 style="background-color: rgb(48, 77, 173);">Perfil De Usuário</h1>
+      <div style=" float: right;padding-right: 29%; padding-top: 7rem;">
+        <img style=" max-width: 20rem; " src="" alt="" srcset="../assets/images/certo.png" > 
+      </div>
+        <br><br><br><br>
+        <div style="padding-left: 20%;">
+            <h5 >Nome:     {{user.name}}</h5>
+            <h5 >Email:    {{user.email}}</h5>
+            <h5 >Cpf:      {{user.cpf}}</h5>
+            <h5 >Endereço: {{user.address}}</h5><br>
+            <button style="width: 5rem;" type="button" class="btn btn-outline-light" (click)="logout()">Sair</button>
+            <button style="width: 9rem;" type="button" class="btn btn-outline-light"><a href="editUser">Atualizar Senha</a></button>
+        </div>
+    </div><br><br><br><br><br><br><br><br><br><br><br><br>
+  </body>
+  
+  <style>
+    body{
+      background: linear-gradient(90deg, rgba(20,17,210,1) 5%, rgb(82, 123, 200) 44%);
+      color: rgb(107, 221, 206);;
+    }
+    form{
+      padding-left: 20%;
+    }
+  
+    h1{
+      padding-left: 30%;
+    }
+  
+    html{
+      background-color: rgb(48, 77, 173)
+    }
+  </style>
+  

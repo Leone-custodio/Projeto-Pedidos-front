@@ -28,11 +28,13 @@ export class LoginComponent {
   constructor(private userService: UserService, private cdr: ChangeDetectorRef ) { }
  
   loginUser(cpf: string, password: string) {
-    this.loading = true; // Ativar o loading
+    this.loading = true;
     
     this.userService.login(cpf, password).subscribe(resultView => {
       this.resultView = resultView;
       
+      localStorage.removeItem('userData');
+
       if (this.resultView.success) {
         const expirationTime = this.calculateExpirationTime();
         const userData: UserCommand = {
@@ -45,32 +47,21 @@ export class LoginComponent {
         localStorage.setItem('userData', JSON.stringify(userData));
         console.log(userData);
         
-        this.showSuccessAlert(this.resultView.message);
+        window.alert(this.resultView.message);
         
       } else {
-        this.showErrorAlert(this.resultView.message);
+        window.alert(this.resultView.message);
       }
       
-      this.loading = false; // Desativar o loading
-      location.reload();
+      this.loading = false; 
+      window.location.reload();
     });
   }
-  
  
   calculateExpirationTime(): number {
     const expiresInMinutes = 1;
-    const expirationTimeInSeconds = new Date().getTime() + expiresInMinutes * 1000;
+    const expirationTimeInSeconds = new Date().getTime() + expiresInMinutes * 100;
     return Math.floor(expirationTimeInSeconds / 1000);
   }
-
-  showSuccessAlert(message: string) {
    
-    window.alert(`Success: ${message}`);
-  }
-  
-  showErrorAlert(message: string) {
-    
-    window.alert(`Error: ${message}`);
-  }
-  
 }

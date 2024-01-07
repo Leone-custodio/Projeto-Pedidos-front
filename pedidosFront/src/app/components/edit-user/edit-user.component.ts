@@ -5,6 +5,11 @@ import { Component } from '@angular/core';
   templateUrl: './edit-user.component.html',
   styleUrls: ['./edit-user.component.css']
 })
-export class EditUserComponent {
 
+
+export class EditUserComponent {
+  loading: boolean = false;
+
+
+  editPassword(cpf: string, password: string){}
 }

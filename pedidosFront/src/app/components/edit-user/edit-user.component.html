@@ -1,31 +1,60 @@
-<body style="padding-top: 4rem;">
-    <br><H1 style="text-align: center;">Insira os seus dados para criar o seu usuário</H1><br>
-    <div class="Corpo do pedido">
-        <div style="display: grid; align-content: center ;">
-            <div class="input-group mb-3">
-                <span class="input-group-text" id="inputGroup-sizing-default">Id</span>
-                <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
-              </div>
-              <div class="input-group mb-3">
-                <span class="input-group-text" id="inputGroup-sizing-default">Nome</span>
-                <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
-              </div>
-              <div class="input-group mb-3">
-                <span class="input-group-text" id="inputGroup-sizing-default">Cpf</span>
-                <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
-              </div>
-              <div class="input-group mb-3">
-                <span class="input-group-text" id="inputGroup-sizing-default">Email</span>
-                <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
-              </div>
-              <div class="input-group mb-3">
-                <span class="input-group-text" id="inputPassword4">Senha</span>
-                <input type="password" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
-              </div>
-        </div>
+<body>
+ 
+  <div style="padding-top: 6rem;">
+    <div *ngIf=" !loading" style=" float: right;padding-right: 20%; padding-top: 11rem; ">
+      <img style=" max-width: 14rem;" src="" alt="" srcset="../assets/images/hacker.png" >
     </div>
-    <div style="text-align: right; margin: 20px; padding-bottom: 20px;">
-        <button type="button" class="btn btn-danger" id="Cancelar">Cancelar</button>
-        <button type="button" class="btn btn-success" id="Confirmar">Confirmar</button>
+    <h1 style="background-color: rgb(48, 77, 173);">Atualização de senha</h1>
+    <div style="padding-left: 30%;" *ngIf="loading" class="loading-container">
+      <img style=" max-width: 20rem; opacity: 40%; z-index: 999;" src="../assets/images/hackerLoad-3.gif" alt="Loading..." />
     </div>
+
+    <form *ngIf=" !loading" (ngSubmit)="editPassword(cpf.value, password.value)">
+      <br><br><br><br>
+      <label style="padding-right: 6.3%;" for="cpf">CPF:</label>
+      <input #cpf type="text" id="cpf" ><br>
+      <label style="padding-right: 4.9%;" for="password">Senha:</label>
+      <input #password type="password" id="password" ><br>
+      <label style="padding-right: 1%;" for="password">Nova Senha:</label>
+      <input #password type="password" id="newPassword" ><br><br>
+      <button style="width: 7rem;" type="submit" class="btn btn-outline-light">Atualizar</button>
+      <button style="width: 7rem;" type="button" class="btn btn-outline-light"><a href="home">Cancelar</a></button>
+    </form>
+
+
+  </div><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 </body>
+
+<style>
+  body{
+    background: linear-gradient(90deg, rgba(20,17,210,1) 5%, rgb(82, 123, 200) 44%);
+    color: rgb(107, 221, 206);;
+  }
+  form{
+    padding-left: 20%;
+  }
+
+  h1{
+    padding-left: 30%;
+  }
+
+  /* button{
+    background-color: rgb(28, 27, 102)
+    
+  } */
+  html{
+    background-color: rgb(48, 77, 173)
+  }
+  .loading-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+</style>

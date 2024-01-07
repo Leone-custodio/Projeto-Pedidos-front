@@ -1,6 +1,8 @@
 <body>
-  
-  <div style="padding-top: 6rem;">
+  <div style="padding-left: 30%;padding-top: 6rem;" *ngIf="loading" class="loading-container">
+    <img style=" max-width: 20rem; opacity: 40%; z-index: 999;" src="../assets/images/hackerLoad-3.gif" alt="Loading..." />
+  </div>
+  <div *ngIf="!loading" style="padding-top: 6rem;">
     <div style=" float: right;padding-right: 20%; padding-top: 9rem;">
       <img style=" max-width: 14rem; " src="" alt="" srcset="../assets/images/hacker.png" >
     </div>
@@ -22,7 +24,7 @@
       <label style="padding-right: 2.5%;" for="password">Senha:</label>
       <input #password type="password" id="password" ><br><br>
       
-      <button type="submit">Cadastrar</button>
+      <button type="submit" class="btn btn-outline-light">Cadastrar</button><br>
       
     </form>
     
@@ -42,9 +44,6 @@
     padding-left: 30%;
   }
 
-  button{
-    background-color: rgb(93, 156, 30);
-  }
   html{
     background-color: rgb(48, 77, 173)
   }

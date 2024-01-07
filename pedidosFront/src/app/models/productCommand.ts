@@ -1,6 +1,6 @@
 import { ProductModel } from "./productModel";
 
-export class ProductCommandResultModel{
+export class ProductCommand{
     success: boolean = false ;
     message: string = "";
     product?: ProductModel;

@@ -11,8 +11,8 @@
         </div>
       </div>
       <img *ngIf="data == true" style="width: 4%;" src="../assets/images/hacker1.png" alt="">
-      <div>
-        <button type="menu" *ngIf="data == true" (click)="logout()" style="float: inline-start; color: rgb(107, 221, 206); cursor: pointer; width: 8rem;" >Olá   {{user.name}}</button>
+      <div *ngIf="data == true" style="padding-right: 4%;">
+        <a href="perfil">Olá {{user.name}}</a>
       </div>
 </nav>
 
