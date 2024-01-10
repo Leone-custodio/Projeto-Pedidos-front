@@ -16,7 +16,6 @@ import { UserModel } from 'src/app/models/userModel';
 })
 export class HomeComponent implements OnInit{
   resultView: ProductCommand = new ProductCommand;
-  orderView: OrderCommand = new OrderCommand;
   authService: AuthService = new AuthService(this.router);
   orderService: OrderService = new OrderService(this.http);
   user: UserModel = {
@@ -43,12 +42,14 @@ export class HomeComponent implements OnInit{
     this.authService.logout();
   }
 
-  createNewOrder(userCpf: string, productName: string){
+  checkOrder(userCpf: string, productName: string){
+   
     this.newOder(userCpf, productName);
+    
   }
 
   ngOnInit(): void {
-    this.getProductsList()
+    this.getProductsList();
     const tokenData = this.authService.getToken();
     this.user.name = tokenData.user.name;
     this.user.cpf = tokenData.user.cpf;
@@ -57,36 +58,52 @@ export class HomeComponent implements OnInit{
   }
   
   calculateExpirationTime(): number {
-    const expiresInMinutes = 1;
-    const expirationTimeInSeconds = new Date().getTime() + expiresInMinutes * 100;
-    return Math.floor(expirationTimeInSeconds / 1000);
-  }
-
-  newOder(userCpf: string, productName: string){
-    this.orderService.createOder(userCpf, productName).subscribe(orderView =>{
-      this.orderView = orderView
-      
-      if (this.orderView.success) {
-        const expirationTime = this.calculateExpirationTime();
-        const orderData: OrderCommand = {
-          success: this.orderView.success,
-          message: this.orderView.message,
-          order: this.orderView.order,
-          expirationTime: expirationTime
-        };
-        
-        localStorage.setItem('orderData', JSON.stringify(orderData));
-        console.log(orderData);
-        
-        window.alert(this.resultView.message);
-        
-      } else {
-        window.alert(this.resultView.message);
-      }
-      
-      this.loading = false; 
-      window.location.reload();
-      });
+    const expiresInMinutes = 60; 
+    const expirationTimeInSeconds = Math.floor(new Date().getTime() / 1000) + expiresInMinutes * 60;
+    return expirationTimeInSeconds;
   }
   
+  newOder(userCpf: string, productName: string){
+    const checkOrderData = this.authService.getOrderToken();
+    const expirationTime = this.calculateExpirationTime();
+
+    if (checkOrderData && userCpf) {
+      this.orderService.insertProducOrder(checkOrderData.order.id, productName).subscribe(
+        response =>{
+
+          if(response.success == true){
+            window.alert(response.message);
+            const orderData: OrderCommand = {
+              success: response.success,
+              message: response.message,
+              order: response.order,
+              expirationTime: expirationTime
+            };
+          }
+        }
+        );
+    }
+
+    else if(userCpf && !checkOrderData){
+        this.orderService.createOder(userCpf, productName).subscribe(
+          response =>{
+            if(response.success == true){
+              window.alert(response.message);
+              const orderData: OrderCommand = {
+                success: response.success,
+                message: response.message,
+                order: response.order,
+                expirationTime: expirationTime
+              };
+              localStorage.setItem('orderData', JSON.stringify(orderData));
+              console.log(orderData);
+            }
+          }
+        )
+    }
+    else
+    {
+      window.alert(' Erro ao realizar o pedido ! Faça o login para fazer o seu pedido');
+    }
+  }
 }

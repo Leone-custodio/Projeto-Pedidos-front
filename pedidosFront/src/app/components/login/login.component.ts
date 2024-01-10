@@ -59,9 +59,10 @@ export class LoginComponent {
   }
  
   calculateExpirationTime(): number {
-    const expiresInMinutes = 1;
-    const expirationTimeInSeconds = new Date().getTime() + expiresInMinutes * 100;
-    return Math.floor(expirationTimeInSeconds / 1000);
+    const expiresInMinutes = 60; 
+    const expirationTimeInSeconds = Math.floor(new Date().getTime() / 1000) + expiresInMinutes * 60; 
+    return expirationTimeInSeconds;
   }
+  
    
 }

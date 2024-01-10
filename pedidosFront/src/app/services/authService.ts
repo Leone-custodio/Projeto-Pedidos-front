@@ -24,8 +24,8 @@ export class AuthService {
     return userData ? JSON.parse(userData) : null;
   }
   getOrderToken(): any | null {
-    const userData = localStorage.getItem(this.orderKey);
-    return userData ? JSON.parse(userData) : null;
+    const orderData = localStorage.getItem(this.orderKey);
+    return orderData ? JSON.parse(orderData) : null;
   }
 
   getExpirationTime(): number | null {

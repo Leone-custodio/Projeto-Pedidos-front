@@ -27,6 +27,7 @@ export class PerfilUsuarioComponent {
 
     if (confirmLogout) {
       localStorage.removeItem('userData');
+      localStorage.removeItem('orderData');
 
       this.router.navigate(['/home']).then(() => {
         window.location.reload();

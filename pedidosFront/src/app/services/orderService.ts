@@ -17,12 +17,14 @@ export class OrderService{
 
     insertProducOrder(orderId : string, productName: string){
         this.newOrder = `${orderId}/${productName}`;
-        return this.http.post<OrderCommand>(`${this.url}${this.orders}insertProducOrder/${this.newOrder}`, this.newOrder); 
+        var teste: string = `${this.url}${this.orders}insertProducOrder/${this.newOrder}`;
+        console.log(teste);
+         return this.http.post<OrderCommand>(teste, this.newOrder); 
     }
 
     deleteProducOrder(orderId : string, productName: string){
-        this.newOrder = `${orderId}/${productName}`;
-        return this.http.post<OrderCommand>(`${this.url}${this.orders}deleteProducOrder/${this.newOrder}`, this.newOrder); 
+        this.newOrder =`${orderId}/${productName}`;
+        return this.http.delete<OrderCommand>(`${this.url}${this.orders}deleteProducOrder/${this.newOrder}`); 
     }
 
     deleteOrder(orderId : string){
