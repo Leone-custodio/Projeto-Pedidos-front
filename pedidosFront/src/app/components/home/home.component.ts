@@ -79,6 +79,8 @@ export class HomeComponent implements OnInit{
               order: response.order,
               expirationTime: expirationTime
             };
+            localStorage.setItem('orderData', JSON.stringify(orderData));
+            console.log(orderData);
           }
         }
         );

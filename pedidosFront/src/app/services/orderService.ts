@@ -25,6 +25,8 @@ export class OrderService{
     deleteProducOrder(orderId : string, productName: string){
         this.newOrder =`${orderId}/${productName}`;
         return this.http.delete<OrderCommand>(`${this.url}${this.orders}deleteProducOrder/${this.newOrder}`); 
+        var teste = `${this.url}${this.orders}deleteProducOrder/${this.newOrder}`;
+        console.log(teste);
     }
 
     deleteOrder(orderId : string){

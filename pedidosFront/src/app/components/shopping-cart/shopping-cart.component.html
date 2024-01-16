@@ -1,37 +1,70 @@
-<div class="cart" style=" padding-top: 6rem ;color: antiquewhite; ">
+<div class="cart" style=" padding-top: 6rem ;color: rgb(107, 221, 206); ">
     <div style="float: inline-start;padding-left: 2rem;"><h5>ITENS DO PEDIDO</h5></div>
-    <div style="float: inline-end;padding-right: 2rem;color: rgb(226, 226, 231);"><h5>TOTAL DO PEDIDO R$ : 0,00</h5></div>
+    <div style="float: inline-end;padding-right: 2rem;color: rgb(107, 221, 206);"><h5>TOTAL DO PEDIDO R$ : {{order.total}}</h5></div>
     <br><br>  
     <div >
-        <div  style="float: inline-start;padding-left: 2rem;max-width: 20%;padding-top: 1%;">
-            <img style="max-width: 80%;" src="" alt="" srcset="../assets/images/mouse.png"><br><br>
-            <!-- <img style="max-width:     50%;" class="card-img-top"  src="" alt="" srcset="../assets/images/fone-gamer.png"><br>
-                <img style="max-width:      50%;" class="card-img-top"  src="" alt="" srcset="../assets/images/Gabinete.png"><br>
-                <img style="max-width:       43%;" class="card-img-top"  src="" alt="" srcset="../assets/images/monitor.png"><br>
-                <img style="max-width:       60%;" class="card-img-top"  src="" alt="" srcset="../assets/images/teclado.png"><br>
-                <img style="max-width: 30%;" class="card-img-top"  src="" alt="" srcset="../assets/images/CadeiraGamer.png"><br> -->
-        </div>
-        <div  style="float: inline-start; max-width: 30%;">
-        <p>Supere seus limites com nosso mouse gamer de alta precisão. Design ergonômico, iluminação RGB e desempenho incrível para a vitória definitiva.</p>
-        </div>
-        <div style="float: inline-start; padding-left: 5%;padding-top: 2%;">
-            <h5>Preço: R$ 0,00</h5>
-            <button  class="btn btn-danger">Remover</button>
-        </div>
-        
+        <table>
+            <thead>
+              <tr>
+                <th>Nome</th>
+                <th>Imagem</th>
+                <th>Descrição</th>
+                <th>Preço</th>
+                <th style="width: 6rem;" >Ações</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let product of order.listProducts">
+                <td>{{product.name}}</td>
+                <td style="width: 16%;" *ngIf="product.name == ('MOUSE')" ><img   class="card-img-top"  src="" alt="" srcset="../assets/images/mouse.png"></td>
+                <td style="width: 16%;" *ngIf="product.name ==('FONEGAMER')"><img   class="card-img-top"  src="" alt="" srcset="../assets/images/fone-gamer.png"></td>
+                <td style="width: 16%;" *ngIf="product.name ==('GABINETE')"><img  class="card-img-top"  src="" alt="" srcset="../assets/images/Gabinete.png"></td>
+                <td style="width: 16%;" *ngIf="product.name ==('MONITOR')"><img class="card-img-top"  src="" alt="" srcset="../assets/images/monitor.png"></td>
+                <td style="width: 16%;" *ngIf="product.name ==('TECLADO')"> <img   class="card-img-top"  src="" alt="" srcset="../assets/images/teclado.png"></td>
+                <td style="width: 16%;"*ngIf="product.name ==('CADEIRA-GAMER')"><img   class="card-img-top"  src="" alt="" srcset="../assets/images/CadeiraGamer.png"></td>
+                <td>{{product.description}}</td>
+                <td>{{product.price}}</td>
+                <td style="width: 6rem;" >
+                    <button style="width: 6rem;" type="button" class="btn btn-outline-light" (click)="removeItemOrder(order.id, product.name)">Remover</button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
     </div><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 
 </div>
 <style>
-    .cart{
-    background: rgb(20,17,210);
-    background: linear-gradient(90deg, rgba(20,17,210,1) 5%, rgb(19, 53, 116) 44%);
-    color: rgb(107, 221, 206);
-    font-family: 'Times New Roman', Times, serif;
-    font-size: 20px;
-}
-</style>
-<!-- float:left; padding-left: 1rem; padding-right: 1rem; -->
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+    }
+
+    th, td {
+      border: 1px solid #0f0101;
+      padding: 8px;
+      text-align: left;
+    }
+
+   
+
+    @media screen and (max-width: 600px) {
+      table {
+        border: 0;
+      }
+
+      th, td {
+        border: 2px solid #0f0101;
+        display: block;
+        width: 100%;
+        box-sizing: border-box;
+      }
+
+      th {
+        text-align: center;
+      }
+    }
+  </style>
 
 
 
