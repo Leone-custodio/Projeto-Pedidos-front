@@ -37,7 +37,8 @@ export class ShoppingCartComponent {
   }
 
   removeItemOrder(orderId: string, productName: string){
-    this.orderService.deleteProducOrder(orderId, productName).subscribe(
+    this.orderService.deleteProducOrder(orderId, productName)
+    .subscribe(
       response =>{ 
       const orderData: OrderCommand = {
         success: response.success,
