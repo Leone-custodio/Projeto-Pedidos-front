@@ -9,12 +9,13 @@ import { HomeComponent } from './components/home/home.component';
 import { EditUserComponent } from './components/edit-user/edit-user.component';
 import { LoginComponent } from './components/login/login.component';
 import { ProductService} from './services/productService';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { UserService } from './services/userService';
 import { FormsModule } from '@angular/forms';
 import { ShoppingCartComponent } from './components/shopping-cart/shopping-cart.component';
 import { AuthService } from './services/authService';
 import { PerfilUsuarioComponent } from './components/perfil-usuario/perfil-usuario.component';
+import { CorsInterceptor } from './services/http-interceptor';
 
 @NgModule({
   declarations: [
@@ -31,9 +32,12 @@ import { PerfilUsuarioComponent } from './components/perfil-usuario/perfil-usuar
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule,
   ],
-  providers: [ProductService, UserService, AuthService],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: CorsInterceptor, multi: true },
+    ProductService, UserService, AuthService],
   bootstrap: [AppComponent],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA,
     NO_ERRORS_SCHEMA]

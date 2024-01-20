@@ -72,13 +72,15 @@ export class HomeComponent implements OnInit{
         response =>{
 
           if(response.success == true){
-            window.alert(response.message);
+            window.alert(`${response.message}, Acesse o seu carrinho pra conferir a suas compras`);
             const orderData: OrderCommand = {
               success: response.success,
               message: response.message,
               order: response.order,
               expirationTime: expirationTime
             };
+            localStorage.setItem('orderData', JSON.stringify(orderData));
+            console.log(orderData);
           }
         }
         );
@@ -88,7 +90,7 @@ export class HomeComponent implements OnInit{
         this.orderService.createOder(userCpf, productName).subscribe(
           response =>{
             if(response.success == true){
-              window.alert(response.message);
+              window.alert(`${response.message}, Acesse o seu carrinho pra conferir a suas compras`);
               const orderData: OrderCommand = {
                 success: response.success,
                 message: response.message,
