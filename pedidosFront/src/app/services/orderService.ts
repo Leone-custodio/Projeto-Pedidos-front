@@ -23,7 +23,12 @@ export class OrderService{
     }
 
     deleteProducOrder(orderId : string, productName: string){
+<<<<<<< HEAD
         return this.http.delete<OrderCommand>(`https://localhost:7122/v1/Oder/deleteProductOrder/${orderId}/${productName}`) 
+=======
+        this.newOrder = `${orderId}/${productName}`;
+        return this.http.post<OrderCommand>(`${this.url}${this.orders}removeProductOrder/${orderId}/${productName}`,this.newOrder); 
+>>>>>>> 048fe4e965abe782552e089b867b6cb1edeae59f
     }
 
     deleteOrder(orderId : string){

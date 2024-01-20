@@ -1,4 +1,5 @@
 import { HttpClient } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { OrderModel } from 'src/app/models/orderModel';
 import { OrderCommand } from 'src/app/models/ordercommand';
@@ -11,46 +12,5 @@ import { OrderService } from 'src/app/services/orderService';
   styleUrls: ['./shopping-cart.component.css']
 })
 export class ShoppingCartComponent {
-   order : OrderModel ={
-    id: '',
-    createdDate: new Date,
-    userName: '',
-    UserCpf: '',
-    listProducts: [],
-    total: 0
-  }
-  orderService: OrderService = new OrderService(this.http);
 
-  constructor(private http: HttpClient, private authService: AuthService){
-    const orderData = this.authService.getOrderToken();
-    this.order.id = orderData.order.id;
-    this.order.UserCpf = orderData.order.userCpf;
-    this.order.listProducts = orderData.order.listProducts;
-    this.order.total = orderData.order.total;
-  }
-
-  removeItens(orderId : string, productName: string){
-    const confirm = window.confirm('Tem certeza de que deseja excluir este item ?');
-
-    if(confirm){
-      this.orderService.deleteProducOrder(orderId,productName).subscribe(
-        response =>{
-          const orderData: OrderCommand = {
-            success: response.success,
-            message: response.message,
-            order: response.order,
-            expirationTime: this.calculateExpirationTime()
-          };
-          localStorage.setItem('orderData', JSON.stringify(orderData));
-          console.log(orderData);
-        }
-      );
-    }
-  }
-
-  calculateExpirationTime(): number {
-    const expiresInMinutes = 60; 
-    const expirationTimeInSeconds = Math.floor(new Date().getTime() / 1000) + expiresInMinutes * 60;
-    return expirationTimeInSeconds;
-  }
 }

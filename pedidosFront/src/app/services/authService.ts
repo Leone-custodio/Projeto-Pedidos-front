@@ -52,15 +52,13 @@ export class AuthService {
     } 
   }
 
-  getOrdertoken(){
-    
-  }
-
+ 
   logout(): void {
     const confirmLogout = window.confirm('Tem certeza de que deseja sair ?');
 
     if (confirmLogout) {
       localStorage.removeItem('userData');
+      localStorage.removeItem('orderData');
 
       this.router.navigate(['/home']).then(() => {
         window.location.reload();
