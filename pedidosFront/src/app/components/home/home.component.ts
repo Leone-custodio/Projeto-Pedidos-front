@@ -63,12 +63,12 @@ export class HomeComponent implements OnInit{
     return expirationTimeInSeconds;
   }
   
-  newOder(userCpf: string, productName: string){
+  newOder(userCpf: string, productId: string){
     const checkOrderData = this.authService.getOrderToken();
     const expirationTime = this.calculateExpirationTime();
 
     if (checkOrderData && userCpf) {
-      this.orderService.insertProducOrder(checkOrderData.order.id, productName).subscribe(
+      this.orderService.insertProducOrder(checkOrderData.order.id, productId).subscribe(
         response =>{
 
           if(response.success == true){
@@ -87,7 +87,7 @@ export class HomeComponent implements OnInit{
     }
 
     else if(userCpf && !checkOrderData){
-        this.orderService.createOder(userCpf, productName).subscribe(
+        this.orderService.createOder(userCpf, productId).subscribe(
           response =>{
             if(response.success == true){
               window.alert(`${response.message}, Acesse o seu carrinho pra conferir a suas compras`);

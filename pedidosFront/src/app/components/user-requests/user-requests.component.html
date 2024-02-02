@@ -1,0 +1,54 @@
+<div style="float: inline-start; padding-left: 32.5rem;"><h2 >{{resultView.message}}</h2></div>
+<div *ngIf="resultView.orders">
+    <table  class="table" >
+        <thead >
+            <tr >
+                <th>Id</th>
+                <th>Data</th>
+                <th>Total</th>
+                <th>Ação</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let item of resultView.orders">
+                <td >{{item.id}}</td>
+                <td >{{item.createdDate}}</td>
+                <td>{{item.total}}</td>
+                <td><button type="button" class="btn btn-danger" (click)="deleteOrder(item.id)">Excluir</button></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<div class="end">
+    <button style="width: 9rem; " type="button" class="btn btn-outline-light"><a href="home" style="color: #08020f;">Voltar</a></button>
+    <button style="width: 9rem; " type="button" class="btn btn-outline-light" (click)="getPedidos()">Meus pedidos</button>
+</div>
+    
+<style>
+div{
+    padding-top: 4.76rem;
+}
+body{
+padding-top: 6rem;
+background: rgb(20,17,210);
+background: linear-gradient(90deg, rgba(20,17,210,1) 5%, rgb(19, 53, 116) 44%);
+color: rgb(107, 221, 206);
+font-family: 'Times New Roman', Times, serif;
+font-size: 20px;
+}
+.table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+.table th, .table td {
+border: 2px solid #08020f;
+padding: 8px;
+text-align: center;
+}
+.end{
+    float: inline-end;
+    padding-right: 35rem;
+
+}
+</style>

@@ -16,6 +16,7 @@ import { ShoppingCartComponent } from './components/shopping-cart/shopping-cart.
 import { AuthService } from './services/authService';
 import { PerfilUsuarioComponent } from './components/perfil-usuario/perfil-usuario.component';
 import { CorsInterceptor } from './services/http-interceptor';
+import { UserRequestsComponent } from './components/user-requests/user-requests.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { CorsInterceptor } from './services/http-interceptor';
     EditUserComponent,
     LoginComponent,
     ShoppingCartComponent,
-    PerfilUsuarioComponent
+    PerfilUsuarioComponent,
+    UserRequestsComponent
   ],
   imports: [
     BrowserModule,

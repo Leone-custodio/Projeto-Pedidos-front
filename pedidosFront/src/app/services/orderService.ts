@@ -10,28 +10,27 @@ export class OrderService{
     constructor(private http: HttpClient){
     }
 
-    createOder(userCpf : string, productName: string){
-        this.newOrder = `${userCpf}/${productName}`;
+    createOder(userCpf : string, productId: string){
+        this.newOrder = `${userCpf}/${productId}`;
         return this.http.post<OrderCommand>(`${this.url}${this.orders}createOrder/${this.newOrder}`, this.newOrder);
     }
 
-    insertProducOrder(orderId : string, productName: string){
-        this.newOrder = `${orderId}/${productName}`;
+    insertProducOrder(orderId : string, productId: string){
+        this.newOrder = `${orderId}/${productId}`;
         var teste: string = `${this.url}${this.orders}insertProducOrder/${this.newOrder}`;
         console.log(teste);
          return this.http.post<OrderCommand>(teste, this.newOrder); 
     }
 
-    deleteProducOrder(orderId : string, productName: string){
-<<<<<<< HEAD
-        return this.http.delete<OrderCommand>(`https://localhost:7122/v1/Oder/deleteProductOrder/${orderId}/${productName}`) 
-=======
-        this.newOrder = `${orderId}/${productName}`;
-        return this.http.post<OrderCommand>(`${this.url}${this.orders}removeProductOrder/${orderId}/${productName}`,this.newOrder); 
->>>>>>> 048fe4e965abe782552e089b867b6cb1edeae59f
+    deleteProducOrder(orderId : string, productId: string){
+        return this.http.delete<OrderCommand>(`${this.url}${this.orders}deleteProducOrder/${orderId}/${productId}`); 
     }
 
     deleteOrder(orderId : string){
         return this.http.delete<OrderCommand>(`${this.url}${this.orders}deleteOrder/${orderId}`); 
+    }
+
+    getOrdersByUserCpf(userCpf: string){
+        return this.http.get<OrderCommand>(`${this.url}${this.orders}getByUserCpf/${userCpf}`)
     }
 }
